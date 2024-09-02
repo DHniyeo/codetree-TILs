@@ -6,6 +6,7 @@ struct node_info {
 	int childnode[2];
 	bool alarm_setting;
 	int auth;
+	int can_alarm;
 };
 node_info tree_data[100001];
 int cnt;
@@ -62,10 +63,9 @@ int main() {
 				else {
 					tree_data[parent].childnode[1] = i;
 				}
-
 			}
 			break;
-			//2)알림망 설정 On Off 토글
+			//2)알림망 설정 On Off 토글 
 		case 200:
 			int c;
 			cin >> c;
@@ -77,7 +77,7 @@ int main() {
 			cin >> c0 >> power;
 			tree_data[c0].auth = power;
 			break;
-			//4)부모 채팅방 교환
+			//4)부모 채팅방 교환 (갯수도 동일)
 		case 400:
 			int c1, c2;
 			cin >> c1 >> c2;

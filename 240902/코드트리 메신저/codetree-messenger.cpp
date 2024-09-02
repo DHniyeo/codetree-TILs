@@ -15,6 +15,8 @@ void init() {
 }
 void dfs(int depth, int node) {
 
+	if (depth >= 20) return;
+	
 	for (int i = 0; i < 2; i++) {
 		int next_node = tree_data[node].childnode[i];
 		if (next_node == 0) continue; // 마지막 노드 도달

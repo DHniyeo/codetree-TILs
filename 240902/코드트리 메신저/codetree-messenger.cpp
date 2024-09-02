@@ -21,21 +21,8 @@ void dfs(int depth, int node) {
 		if (tree_data[next_node].alarm_setting == true) { // 알람 설정 되있으면 탐색 가능
 			if (depth < tree_data[next_node].auth) { // 파워가 닿으면 수신 가능
 				cnt++;
-				dfs(depth + 1, next_node);
 			}
-			else {
-				for(int k = 0; k < 2; k++){
-					int nnext_node = tree_data[next_node].childnode[k];
-					if (nnext_node == 0) continue;
-					if (tree_data[nnext_node].alarm_setting == true) {
-						if (depth < tree_data[nnext_node].auth) { // 파워가 닿으면 수신 가능
-							cnt++;
-							dfs(depth + 2, nnext_node);
-						}
-					}
-					
-				}
-			}
+			dfs(depth + 1, next_node);
 		}
 	}
 }

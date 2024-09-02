@@ -14,9 +14,7 @@ void init() {
 	cin >> N >> Q;
 }
 void dfs(int depth, int node) {
-	if (depth >= 20) {
-		return;
-	}
+	if (depth >= 20) return;
 	for (int i = 0; i < 2; i++) {
 		int next_node = tree_data[node].childnode[i];
 		if (next_node == 0) continue; // 마지막 노드 도달
@@ -24,8 +22,8 @@ void dfs(int depth, int node) {
 		if (tree_data[next_node].alarm_setting == true) { // 알람 설정 되있으면 탐색 가능
 			if (depth < tree_data[next_node].auth) { // 파워가 닿으면 수신 가능
 				cnt++;
-				dfs(depth + 1, next_node);
 			}
+			dfs(depth + 1, next_node);
 		}
 	}
 }

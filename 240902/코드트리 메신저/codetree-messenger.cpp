@@ -44,15 +44,13 @@ int main() {
 			//1)메신저 준비
 		case 100:
 			tree_data[0].alarm_setting = true;
-			for (int i = 0; i < 2; i++) {
-				tree_data[0].childnode[i] = 0;
-			}
+			tree_data[0].childnode[0] = 0;
+			tree_data[0].childnode[1] = 0;
 			for (int i = 1; i <= N; i++) {
 				cin >> tree_data[i].parent;
 				tree_data[i].alarm_setting = true;
-				for (int j = 0; j < 2; j++) {
-					tree_data[i].childnode[j] = 0;
-				}
+				tree_data[i].childnode[0] = 0;
+				tree_data[i].childnode[1] = 0;
 			}
 			for (int i = 1; i <= N; i++) {
 				cin >> tree_data[i].auth;
@@ -67,7 +65,6 @@ int main() {
 				}
 
 			}
-
 			break;
 			//2)알림망 설정 On Off 토글
 		case 200:

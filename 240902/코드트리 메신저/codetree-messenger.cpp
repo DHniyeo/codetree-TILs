@@ -14,9 +14,9 @@ void init() {
 	cin >> N >> Q;
 }
 void dfs(int depth, int node) {
-
-	if (depth >= 20) return;
-	
+	if (depth >= 20) {
+		return;
+	}
 	for (int i = 0; i < 2; i++) {
 		int next_node = tree_data[node].childnode[i];
 		if (next_node == 0) continue; // 마지막 노드 도달
@@ -26,11 +26,6 @@ void dfs(int depth, int node) {
 				cnt++;
 				dfs(depth + 1, next_node);
 			}
-			else { // 파워가 안닿으면 다음 노드 아래 자식들 dfs로 돌림
-				dfs(depth + 2, tree_data[next_node].childnode[0]);
-				dfs(depth + 2, tree_data[next_node].childnode[1]);
-			}
-			
 		}
 	}
 }

@@ -27,7 +27,13 @@ void dfs(int depth, int node) {
 				for(int k = 0; k < 2; k++){
 					int nnext_node = tree_data[next_node].childnode[k];
 					if (nnext_node == 0) continue;
-					dfs(depth + 2, nnext_node);
+					if (tree_data[nnext_node].alarm_setting == true) {
+						if (depth < tree_data[nnext_node].auth) { // 파워가 닿으면 수신 가능
+							cnt++;
+							dfs(depth + 2, nnext_node);
+						}
+					}
+					
 				}
 			}
 		}

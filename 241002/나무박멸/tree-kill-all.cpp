@@ -120,7 +120,10 @@ void herbicide_spread() {
 			int nx = best_location.second + i * h_dx[d];
 			if (ny < 0 || nx < 0 || ny >= N || nx >= N) break;
 			if (field[ny][nx] == -1) break;
-			if (field[ny][nx] == 0) break;
+			if (field[ny][nx] == 0) { // 해당 칸 까지는 뿌려짐
+				cut_map[ny][nx] = 1;
+				break;
+			}
 			cut_map[ny][nx] = 1;
 			field[ny][nx] = 0;
 		}
@@ -138,6 +141,15 @@ void init() {
 		}
 	}
 }
+void dbg_print() {
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
+			cout << field[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
 
 int main() {
 	init();
@@ -145,6 +157,7 @@ int main() {
 		tree_grow();
 		tree_breed();
 		herbicide_spread();
+		//dbg_print();
 		// 제초제 기한 끝났다면 맵 삭제
 		if (herbicide.size() == 0) continue;
 		else {
